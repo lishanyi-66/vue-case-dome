@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+        <cpn1></cpn1>
+        <cpn1></cpn1>
+    </div>
+    <template id="cpn1">
+        <div>
+            <h2>当前的数值:{{counter}}</h2>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
+    </template>
+    
+    <script>
+        Vue.component('cpn1',{
+            template:'#cpn1',
+            // data为什么要是函数
+            // 01：做到组件之前互补影响
+            
+            data(){
+                return {
+                    counter:0
+                }
+            },
+            methods:{
+                increment(){
+                    this.counter++
+                },
+                decrement(){
+                    this.counter--
+                }
+            }
+        })
+         var vue = new Vue({
+            el : '#app',
+            data : {  },
+            methods : { }    
+        });
+    </script>
+</body>
+
+</html>

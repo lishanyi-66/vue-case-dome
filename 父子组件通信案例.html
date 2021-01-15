@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :number1=num1 :number2=num2 @number1change="num1change" @number2change="num2change"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <!-- <input type="text" v-model="cnumber1"> -->
+            <input type="text" :value="cnumber1" @input="input1change">
+
+            <h2>{{number1}}</h2>
+            <!-- <input type="text" v-model="cnumber2"> -->
+            <input type="text" :value='cnumber2' @input="input2change">
+            <h2>{{number2}}</h2>
+        </div>
+        
+    </template>
+    <script>
+        const cpn={
+            template:'#cpn',
+            props:{
+                number1:Number,
+                number2:Number
+            },
+            data(){
+                return {
+                    cnumber1:this.number1,
+                    cnumber2:this.number2
+                    
+                    
+                }
+            },
+            methods:{
+                input1change(event){
+                    this.cnumber1=event.target.value,
+                    console.log(this.cnumber1)
+                    this.$emit('number1change',this.cnumber1)
+                    // 修改num1和num2的关系
+                    this.cnumber2=this.cnumber1*100
+                    this.$emit("number2change",this.cnumber2)
+                },
+                
+                input2change(event){
+                    this.cnumber2=event.target.value,
+                    this.$emit('number2change',this.cnumber2)
+                    this.cnumber1=this.cnumber2/100
+                    this.$emit('number1change',this.cnumber1)
+                },
+
+            }
+        }
+         var vue = new Vue({
+            el : '#app',
+            data : { 
+                num1:1,
+                num2:0
+             },
+            methods : {
+                num1change(value){
+                    this.num1=Number(value)
+                },
+                num2change(value){
+                    this.num2=Number(value)
+                }
+            } ,
+            components:{
+                cpn
+            }  
+        });
+    </script>
+</body>
+
+</html>

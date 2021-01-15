@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮一</button>
+    <button>按钮二</button>
+    <button>按钮三</button>
+    <button>按钮四</button>
+    <button>按钮五</button>
+    <script>
+        var Btns=document.getElementsByTagName('button')
+        // for(var i=0;i<Btns.length;i++){
+        //     Btns[i].addEventListener('click',function(){
+        //         console.log('第'+i+'被点击了')
+        //     })
+        // }
+        for(let i=0;i<Btns.length;i++){
+            Btns[i].addEventListener('click',function(){
+                
+                console.log('第'+i+'被点击了')
+            })
+        }
+    </script>
+</body>
+</html>

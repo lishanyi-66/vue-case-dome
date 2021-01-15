@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in movies" v-on:click="btnClick(index)" v-bind:class="activeIndex===index?'active':''" >{{index}}-{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', '海尔兄弟', '喜洋洋和灰太狼', '紧急救援'],
+                // iSactive:false,
+                activeIndex:-1
+            },
+            methods: {
+                btnClick:function(index){
+                    console.log(index),
+                    this.activeIndex=index
+                }
+            }
+        });
+    </script>
+    <style>
+        .active{
+            color: red;
+        }
+    </style>
+</body>
+
+</html>

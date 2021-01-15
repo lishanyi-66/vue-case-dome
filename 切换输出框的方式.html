@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div v-if="isuse">
+            <label for="username">用户账号</label>
+            <input type="text" placeholder="用户账号"  id="username" key="usename">
+        </div>
+        <div v-else>
+            <label for="email">用户邮箱</label>
+            <input type="text" placeholder="用户邮箱"  id="email" key="email">
+        </div>
+        <button @click="btnclick">点击切换</button>
+    </div>
+    <script>
+         var vue = new Vue({
+            el : '#app',
+            data : { 
+                isuse:true,
+             },
+            methods : { 
+                btnclick:function(){
+                    this.isuse=!this.isuse
+                }
+            }    
+        });
+    </script>
+</body>
+
+</html>
